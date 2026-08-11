@@ -45,10 +45,10 @@ gostota LiDAR točk oziroma prostorska ločljivost podatkov,
 
 Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov. Kernel 3*3 pri rastru z ločljivostjo 0,5 m predstavlja bistveno manjše fizično območje kot kernel 3*3 pri rastru z ločljivostjo 2 m. 
 """
-input = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius.tif"
-output = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius_clean9.tif"
+input = r"downland you data in .tif"
+output = r" ouput of you data in .tif"
 
-kernel_size = 9
+kernel_size = 1
 
 if os.path.exists(input):
     print("Datoteka je najdena")
