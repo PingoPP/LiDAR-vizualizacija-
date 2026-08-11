@@ -1,6 +1,7 @@
 import rasterio as rio
 import numpy as np 
 from scipy.ndimage import median_filter
+import os
 """
 Kernel je jedro operacijskega sistema oziroma na kratko jedro. V kontekstu tega programa pa se osredotočam predvsem na kernel_size, ki predstavlja velikost območja, ki ga algoritem obravnava okoli posamezne celice oziroma piksla. Kernel je načeloma predstavljen kot matrika oziroma okno, ki se pomika čez podatke.
 
@@ -49,10 +50,10 @@ output = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius_clean9.tif"
 
 kernel_size = 9
 
-if input:
-    print("Odlično dela")
-else: 
-    print("Ne dela odlično")
+if os.path.exists(input):
+    print("Datoteka je najdena")
+else:
+    print("Datoteka ne obstaja lol")
 
 with rio.open(input) as src: 
     profile = src.profile 
