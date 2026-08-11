@@ -13,7 +13,7 @@ Primer 3*3 kernela:
 
 V tem primeru imamo **3*3 matriko**, ki vsebuje devet celic. Kernel zajema osrednjo celico `X` in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
 
-Pri **LiDAR podatkih** je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
+Pri LiDAR podatkih je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
 
 Pri 2D rastru lahko na primer uporabimo:
                           3*3
@@ -28,10 +28,10 @@ Pri tem tretja dimenzija predstavlja prostorsko razsežnost v 3D prostoru.
 Vpliv velikosti kernela
 
     - Majhni kerneli(npr. 3*3 ali 3*3*3) se uporabljajo za ekstrakcijo lokalnih značilnosti, glajenje in standardne konvolucije. Njihova prednost je manjša računska zahtevnost, vendar zajamejo le manjši lokalni kontekst.
-        Primer v arheologiji: uporabni so za zaznavanje subtilnih značilnosti mikroreliefa, kot so manjše gomile, jarki ali druge manjše anomalije. Pri tem je pomembna tudi prostorska ločljivost podatkov, na primer 0,5 m.
+        Primer v arheologiji: uporabni so za zaznavanje subtilnih značilnosti mikroreliefa, kot so manjše gomile, jarki ali druge manjše anomalije. 
 
     - Srednje veliki kerneli (npr. 5*5 do 9*9 oziroma 5*5*5 do 9*9*9) omogočajo obravnavo širše okolice in zato zaznavanje večjih lokalnih struktur. Kernel, če ima 7*7 in ločljivost 0,5 m, pri tem pokriva približno 3.5*3.5 območja
-        Primer v arheologiji: primerni so lahko za analizo večjih reliefnih struktur, kot so gradišča, terase ali večji jarki. V gozdarskih aplikacijah se podobni lokalni pristopi uporabljajo tudi pri analizi CHM, na primer pri zaznavanju lokalnih maksimumov oziroma vrhov dreves.
+        Primer v arheologiji: primerni so lahko za analizo večjih reliefnih struktur, kot so gradišča, terase ali večji jarki. Največkrat je so srednji veliki kerneli najbolj primerni za arheologijo. V gozdarskih aplikacijah se podobni lokalni pristopi uporabljajo tudi pri analizi CHM, na primer pri zaznavanju lokalnih maksimumov oziroma vrhov dreves.
 
     - Veliki kerneli (npr. 21*21 ali več oziroma 21*21*21 ali več) zajamejo precej širši prostorski kontekst. Uporabni so pri naprednejših modelih, kjer je pomembno povezovanje informacij iz večjega območja.
         Primer v arheologiji: lahko so uporabni pri analizi širših prostorskih vzorcev v pokrajini, na primer pri raziskovanju rimskih mejah pososeti ali druge večje krajinske struktur.
@@ -43,7 +43,7 @@ gostota LiDAR točk oziroma prostorska ločljivost podatkov,
     namen analize oziroma naloge,
     računska zahtevnost oziroma razpoložljivi računski viri.
 
-Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov. Kernel 3*3 pri rastru z ločljivostjo 0,5 m predstavlja bistveno manjše fizično območje kot kernel 3*3 pri rastru z ločljivostjo 2 m. 
+Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov. Kernel 3*3 pri rastru z ločljivostjo 0,5 stm predstavlja biveno manjše fizično območje kot kernel 3*3 pri rastru z ločljivostjo 2 m. 
 """
 input = r"downland you data in .tif"
 output = r" ouput of you data in .tif"
