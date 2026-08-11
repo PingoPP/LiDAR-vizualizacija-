@@ -42,8 +42,7 @@ gostota LiDAR točk oziroma prostorska ločljivost podatkov,
     namen analize oziroma naloge,
     računska zahtevnost oziroma razpoložljivi računski viri.
 
-Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov. Kernel 3*3 pri rastru z ločljivostjo 0,5 m predstavlja bistveno manjše fizično območje kot kernel 3*3 pri rastru z ločljivostjo 2 m.
-Če 
+Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov. Kernel 3*3 pri rastru z ločljivostjo 0,5 m predstavlja bistveno manjše fizično območje kot kernel 3*3 pri rastru z ločljivostjo 2 m. 
 """
 input = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius.tif"
 output = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius_clean9.tif"
