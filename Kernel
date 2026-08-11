@@ -1,0 +1,27 @@
+import rasterio as rio
+import numpy as np 
+from scipy.ndimage import median_filter
+
+input = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius.tif"
+output = r"C:\\Users\\jakad\\Downloads\\GK_399_75_radius_clean9.tif"
+
+kernel_size = 9
+
+if input:
+    print("Odlično dela")
+else: 
+    print("Ne dela odlično")
+
+with rio.open(input) as src: 
+    profile = src.profile 
+    arr = src.read(1).astype(np.float32)
+    nodata = src.nodata
+
+mask_nodata = (arr == nodata) if nodata is not None else np.zeros_like(arr, dtype=bool)
+
+arr_filtered = median_filter(arr, size=kernel_size)
+arr_filtered[mask_nodata]= nodata if nodata is not None else arr_filtered[mask_nodata]
+
+with rio.open(output, "w", **profile) as dst:  
+    dst.write(arr_filtered, 1)
+
