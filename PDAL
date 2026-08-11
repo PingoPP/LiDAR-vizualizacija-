@@ -1,0 +1,64 @@
+import pdal 
+import json as json_module
+pipeline_json = {
+    "pipeline": [
+        "C:\\Users\\jakad\\Downloads\\GK_399_75.laz",
+        {
+            "type": "filters.elm",
+            "cell": 10.0,
+            "threshold": 0.5
+        },
+        {
+            "type": "filters.outlier",
+            "method": "radius",
+            "radius": 1,
+            "min_k": 4,
+        },
+        {
+            "type": "filters.smrf",
+            "window": 12,
+            "slope": 0.2,
+            "scalar": 0.3,
+            "returns": "last",
+            "cell": 0.5,
+            "threshold": 0.3,
+        },
+        { 
+            "type": "filters.range", 
+            "limits": "Classification[2:2], Classification[6:6]"
+        },
+        {
+            "type": "filters.assign",
+            "assignment": "Classification[:]=2"
+
+        },
+        {
+            "type": "writers.las",
+            "filename": "C:\\Users\\jakad\\Downloads\\GK_399_75_radius.laz",
+            "forward": "all",
+            "minor_version": "4",
+            "dataformat_id": "8"
+        },
+        {
+            "type": "writers.gdal",
+            "filename": "C:\\Users\\jakad\\Downloads\\GK_399_75_radius.tif",
+            "resolution": 0.5,
+            "output_type": "idw",
+            "gdaldriver": "GTiff",
+            "nodata": -9999,
+            "window_size": 6
+        }
+    ]
+}
+
+pipeline = pdal.Pipeline(json_module.dumps(pipeline_json))
+
+try:
+    count = pipeline.execute()
+    print(f"{count} število točk ")
+except Exception as e:
+    print(f"ERROR: {e}")
+
+
+
+    
