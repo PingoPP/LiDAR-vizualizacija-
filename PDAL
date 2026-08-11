@@ -42,11 +42,6 @@ pipeline_json = {
             "limits": "Classification[2:2], Classification[6:6]"
         },
         {
-            "type": "filters.assign",
-            "assignment": "Classification[:]=2"
-
-        },
-        {
             "type": "writers.las",
             "filename": "C:\\Users\\jakad\\Downloads\\GK_399_75_radius.laz",
             "forward": "all",
