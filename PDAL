@@ -10,7 +10,7 @@ Sam PDAL deluje v osnovi na principu PIPELINE-a, ki predstavlja zaporedje korako
                     "FILTER(S)"
                     obdelujejo, čisitijo, klasificirajo oblakovne točke
                     "WRITERS"
-                    izpis rezultata obdelave v laz. datoteki ali tiff.datoteki
+                    izpis rezultata obdelave v laz. datoteki ali tif.datoteki
 """
 
 
