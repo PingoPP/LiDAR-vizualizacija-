@@ -10,18 +10,24 @@ Sam PDAL deluje v osnovi na principu PIPELINE-a, ki predstavlja zaporedje korako
                     "FILTER(S)"
                     obdelujejo, čisitijo, klasificirajo oblakovne točke
                     "WRITERS"
-                    izpis rezultata obdelave v laz. datoteki ali tif.datoteki
+                    izpis rezultata obdelave v laz. datoteki ali tiff.datoteki
 """
 
 
 pipeline_json = {
     "pipeline": [
-        "C:\\Users\\jakad\\Downloads\\GK_399_75.laz",
+        r"C:\lidar\PDAL\tiles_raw\merged_Kamnik.las",
         {
             "type": "filters.elm",
             "cell": 10.0,
             "threshold": 0.5
         },
+#        {
+#            "type": "filters.outlier",
+#            "method": "statistical",
+#            "mean_k": 16,
+#            "multiplier": 4.5
+#        },
         {
             "type": "filters.outlier",
             "method": "radius",
@@ -41,16 +47,21 @@ pipeline_json = {
             "type": "filters.range", 
             "limits": "Classification[2:2], Classification[6:6]"
         },
+#        {
+#            "type": "filters.assign",
+#            "assignment": "Classification[:]=2"
+#
+#        },
         {
             "type": "writers.las",
-            "filename": "C:\\Users\\jakad\\Downloads\\GK_399_75_radius.laz",
+            "filename": r"C:\Users\jakad\Downloads\radius_merged.laz",
             "forward": "all",
             "minor_version": "4",
             "dataformat_id": "8"
         },
         {
             "type": "writers.gdal",
-            "filename": "C:\\Users\\jakad\\Downloads\\GK_399_75_radius.tif",
+            "filename": r"C:\Users\jakad\Downloads\radius_merged.tif",
             "resolution": 0.5,
             "output_type": "idw",
             "gdaldriver": "GTiff",
