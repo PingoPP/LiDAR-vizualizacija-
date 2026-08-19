@@ -41,7 +41,6 @@ Za samo vizualizacijo sem se odločil uporabiti Sky View Factor iz orodja RVT.
 
 # Raziskovalno vprašanje: 
 
-    Ali je kombinacija velikosti kernela in filtra mediane, res odvisna od velikost LiDAR posnetka?
-    Stransko vprašanje: Kateri vir je najboljši za uporabo interpretacije za arheologije in nasploh?
+    Kako velikost in značilnosti območja vplivajo na optimalno izbiro velikosti kernela in medianega filtra pri vizualizaciji LiDAR podatkov za arheološko interpretacijo?
 
 
