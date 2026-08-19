@@ -4,7 +4,7 @@ from scipy.ndimage import median_filter
 import os 
 """
 
-Kernel oz. jedro je v kontekstu obdelave slik in prosotrskih podaktov matrika (nekakšno okno), ki se pomika čez podatke in se uporablja za razne operacije kot je konvolucija.
+Kernel oz. jedro je v kontekstu obdelave slik in prostorskih podaktov matrika (nekakšno okno), ki se pomika čez podatke in se uporablja za razne operacije kot je konvolucija.
 V tem algoritmu se osredotočam specifično na kernel_size, ki predstavlja velikost tega območja okoli posameznega piksla (celice), ki ga algoritem obravnava. 
 
 Primer 3*3 kernela:
@@ -71,27 +71,30 @@ Primer delovanja mediana filtra
 
 """
 #vhod datoteke (pred uporabo kernel_size)
-input = r"C:\Users\jakad\Downloads\radius_merged.tif"
+input_path = r"\xxxx\xx.tif"
 
 #izhod datoteke (po uporabi kernel_size)
-output = r"C:\Users\jakad\Downloads\radius_merged_6.tif"
+output_path = r"C:\xxxx\xxx.tif"
 
 #kernel_size, kjer lahko kontorlirano dodajš številko. Učinek kernel_size bo odvisno od velikosti matrike. Zato je potrebno, da sta matrika in kernel_size čim bolj skladna, saj na tak način bo tudi vizaulizacija terena omogočala boljšo interpretacijo 
-kernel_size = 6 
+#za priporočilo je najbolje uporabiti zgolj lihe velikosti
+kernel_size = 5
 
-#kratka informativnost, če deluje vhod datoteke v ta algoritem
-if os.path.exists(input):
+#kratek izpis, ki pove, ali obstaja vhodna datoteka
+if os.path.exists(input_path):
     print("Super je")
 else:
     print("Here we go again!")
+
 
 #s pomočjo knjižnice rasaterio (rio) in numpy (np) z vhodom datoteke, da v pregled celotno matriko in pretvori v array (arr)
 with rio.open(input) as src: 
     profile = src.profile 
     arr = src.read(1).astype(np.float32)
     nodata = src.nodata
-
-#Če je v array (arr) priostna se nato pretovri v nodata, kjer nato sprememni v matriko TRUE/FALSE (prikaz spodaj). Pri tem nodata označi TRUE povsod tam, kjer je prisotna ta vrednost.
+  
+profile.update(dtype=rio.float32)
+#Če je v array (arr) priostna [vrednost], se nato pretovri v nodata, kjer nato sprememni v matriko TRUE/FALSE (prikaz spodaj). Pri tem nodata označi TRUE povsod tam, kjer je prisotna ta vrednost.
 """
 [[False, False,  True],
  [False,  True, False],
@@ -108,9 +111,9 @@ mask_nodata = (arr == nodata) if nodata is not None else np.zeros_like(arr, dtyp
 #filitriranje
 arr_filtered = median_filter(arr, size=kernel_size)
 
-#Podoben pristop kot prej, samo, da gre že za filtrirano območje s pomočje kernel_size in median filter
+#Podoben pristop kot prej, samo, da gre že za filtrirano območje s pomočjo kernel_size in median filter
 arr_filtered[mask_nodata]= nodata if nodata is not None else arr_filtered[mask_nodata]
 
-#izpis izhode datoteke urejene celotne matrike s pomočjo kernel_size.
-with rio.open(output, "w", **profile) as dst:  
+#izpis izhodne datoteke urejene celotne matrike s pomočjo kernel_size.
+with rio.open(output_path, "w", **profile) as dst:  
     dst.write(arr_filtered, 1)
