@@ -1,8 +1,8 @@
 Za ocenjevanje kakovosti vizualizacije sem uporabil tri kriterije:
-
-    berljivost,
-    vidne strukture,
-    čistota.
+            
+                berljivost,
+                vidne strukture,
+                čistota.
 
 Vsak kriterij sem ocenil na lestvici od 1 do 10, nato pa sem iz posameznih ocen izračunal povprečno oceno vizualizacije.
 
