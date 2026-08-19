@@ -1,3 +1,17 @@
+Za ocenjevanje kakovosti vizualizacije sem uporabil tri kriterije:
+
+    berljivost,
+    vidne strukture,
+    čistota.
+
+Vsak kriterij sem ocenil na lestvici od 1 do 10, nato pa sem iz posameznih ocen izračunal povprečno oceno vizualizacije.
+
+Pri kriteriju berljivosti sem ocenjeval, kako jasna in enostavna je vizualizacija za interpretacijo.
+Pri kriteriju vidnih struktur sem se osredotočil predvsem na vidnost arheoloških ostankov, jasnost geomorfoloških sledov in ustrezno ostrino prikaza.
+Pri kriteriju čistote pa sem ocenjeval predvsem prisotnost šumov in drugih neželenih elementov, ki bi lahko otežili interpretacijo vizualizacije.
+
+Ker rezultati temeljijo na subjektivnem ocenjevanju, niso povsem objektivni, zato njihov prispevek k odgovoru na raziskovalno vprašanje ni tako relevanten.
+
 # REZULTAT - 1 
 
 | Kernel size | Berljivost | Vidne strukture | Čistota | Povprečna ocena (1–10) |
