@@ -15,7 +15,7 @@ Primer 3*3 kernela:
 
 V tem primeru imamo 3*3 matriko, ki vsebuje devet celic. Kernel zajema osrednjo celico `X` in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
 
-Pri **LiDAR podatkih** je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
+Pri LiDAR podatkih je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
 
 Pri 2D rastru lahko na primer uporabimo:
                           3*3
@@ -40,7 +40,8 @@ Vpliv velikosti kernela
 
 Dejavniki pri izbiri kernel size
 Na izbiro velikosti kernela vpliva več dejavnikov:
-gostota LiDAR točk oziroma prostorska ločljivost podatkov,
+    
+    gostota LiDAR točk oziroma prostorska ločljivost podatkov,
     merilo ciljnega objekta oziroma strukture,
     namen analize,
     računska zahtevnost oziroma razpoložljivi računski viri.
@@ -61,6 +62,7 @@ Primer delovanja mediana filtra
             [ 1 ][ 2 ][ 3 ]
             [ 4 ][ 8 ][ 6 ]
             [ 7 ][ 5 ][ 9 ]
+            
     kjer je v centru piksel z vrednostjo 8
 3. Sortiranje vrednosti pikslov po naraščajočem vrstnem redu. Za centralni piksel so razvrščeni: [1, 2, 3, 4, 5, 6, 7, 8, 9].
 4. V naslednji fazi je mediana vrednost 5.
