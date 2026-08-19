@@ -13,7 +13,7 @@ Primer 3*3 kernela:
                     [ 4 ][ X ][ 6 ]
                     [ 7 ][ 8 ][ 9 ]
 
-V tem primeru imamo **3*3 matriko**, ki vsebuje devet celic. Kernel zajema osrednjo celico `X` in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
+V tem primeru imamo 3*3 matriko, ki vsebuje devet celic. Kernel zajema osrednjo celico `X` in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
 
 Pri **LiDAR podatkih** je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
 
