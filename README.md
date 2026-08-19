@@ -1,10 +1,10 @@
-V eksperimentu-projektu sem se odločil, da bom skušal izboljšati svojo vizualizacijo LiDAR posnetka za arheološke interpretacije. Vsi rezultati in metode bodo objavljeni tu, na temu GitHubu reprozitoriju. 
-LiDAR podatke sem pridobil iz dve platformi: 
+V eksperimentu-projektu sem se odločil, da bom skušal izboljšati svojo vizualizacijo LiDAR posnetka za arheološke interpretacije. Vsi rezultati in metode bodo objavljeni tu, v tem GitHubovem reprozitoriju. 
+LiDAR podatke sem pridobil iz dveh platform: 
 
               - Atlas LiDAR (https://gis.arso.gov.si/evode/profile.aspx?id=atlas_voda_Lidar@Arso ) 
               - CLSS (https://clss.si/).
 
-Pri obdelavi teh podatkov sem primarno uporabljal Python, pri čemer je bilo uporabljenih več knjižic:
+Pri obdelavi teh podatkov sem primarno uporabljal Python, pri čemer je bilo uporabljenih več knjižnic:
 
               - PDAL
               - JSON
@@ -41,6 +41,6 @@ Za samo vizualizacijo sem se odločil uporabiti Sky View Factor iz orodja RVT.
 
 # Raziskovalno vprašanje: 
 
-    Kako velikost in značilnosti območja vplivajo na optimalno izbiro velikosti kernela in medianega filtra pri vizualizaciji LiDAR podatkov za arheološko interpretacijo?
+    Kako velikost vhodnega LiDAR območja vpliva na optimalno velikost kernela pri uporabi medianega filtra za vizualizacijo reliefa?
 
 
