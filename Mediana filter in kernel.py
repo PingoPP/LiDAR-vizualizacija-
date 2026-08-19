@@ -13,30 +13,34 @@ Primer 3*3 kernela:
                     [ 4 ][ X ][ 6 ]
                     [ 7 ][ 8 ][ 9 ]
 
-V tem primeru imamo 3*3 matriko, ki vsebuje devet celic. Kernel zajema osrednjo celico `X` in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
+V tem primeru imamo 3*3 matriko, ki vsebuje devet celic. Kernel zajema osrednjo celico X in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
 
-Pri LiDAR podatkih je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi oziroma volumetričnimi podatki.
+Pri LiDAR podatkih je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi podatki.
 
 Pri 2D rastru lahko na primer uporabimo:
+
                           3*3
                           5*5
                           7*7
+                          
 Pri 3D podatkih pa lahko govorimo o volumetričnem kernelu:
+
                           3*3*3
                           5*5*5
                           7*7*7
+                          
 Pri tem tretja dimenzija predstavlja prostorsko razsežnost v 3D prostoru.
 
 Vpliv velikosti kernela
 
-    - Majhni kerneli(npr. 3*3 ali 3*3*3) se uporabljajo za ekstrakcijo lokalnih značilnosti, glajenje in standardne konvolucije. Njihova prednost je manjša računska zahtevnost, vendar zajamejo le manjši lokalni kontekst.
-    Pri premajhnem kernel_size šum ne bo popolnoma odstranjen, medtem ko lahko že rahlo povečanje kernel_size povzroči preveliko glajenje in izgubo drobnih podrobnosti.
+    - Majhni kerneli (npr. 3*3 ali 3*3*3) se uporabljajo za ekstrakcijo lokalnih značilnosti, glajenje in standardne konvolucije. Njihova prednost je manjša računska zahtevnost, vendar zajamejo le manjši lokalni kontekst.
+      Pri premajhnem kernel_size šum ne bo popolnoma odstranjen.
 
     - Srednje veliki kerneli (npr. 5*5 do 9*9 oziroma 5*5*5 do 9*9*9) omogočajo obravnavo širše okolice in zato zaznavanje večjih lokalnih struktur. Kernel, če ima 7*7 in ločljivost 0,5 m, pri tem pokriva približno 3.5*3.5 območja
-        Kerneli te velikosti (kernel_size) so praviloma dovolj veliki, da v celoti zaobjamejo tipične strukture in omogočijo učinkovito odstranjevanje šuma. Medtem premajhen kernel_size v tem razponu pa lahko posamezne šume pusti neodstranjene. 
+      Kerneli te velikosti (kernel_size) so praviloma dovolj veliki, da v celoti zaobjamejo tipične strukture in omogočijo učinkovito odstranjevanje šuma.  
 
     - Veliki kerneli (npr. 21*21 ali več oziroma 21*21*21 ali več) zajamejo precej širši prostorski kontekst. Uporabni so pri naprednejših modelih, kjer je pomembno povezovanje informacij iz večjega območja.
-    Tu je treba ločiti velikost kernela od ločljivosti rastra.
+      Tu je treba ločiti velikost kernela od ločljivosti rastra.
 
 Dejavniki pri izbiri kernel size
 Na izbiro velikosti kernela vpliva več dejavnikov:
@@ -67,7 +71,7 @@ Primer delovanja mediana filtra
 3. Sortiranje vrednosti pikslov po naraščajočem vrstnem redu. Za centralni piksel so razvrščeni: [1, 2, 3, 4, 5, 6, 7, 8, 9].
 4. V naslednji fazi je mediana vrednost 5.
 5. Na podlagi vrednosti mediane se ta nato zapiše v center, kjer je bila prej vrednost 8.
-6. Postopek 2-5 se ponovi za vse ostale piksle v sliki.
+6. Postopek 2.-5. se ponovi za vse ostale piksle v sliki.
 
 """
 #vhod datoteke (pred uporabo kernel_size)
