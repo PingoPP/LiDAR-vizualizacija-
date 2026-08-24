@@ -92,7 +92,7 @@ else:
 
 
 #s pomočjo knjižnice rasaterio (rio) in numpy (np) z vhodom datoteke, da v pregled celotno matriko in pretvori v array (arr)
-with rio.open(input) as src: 
+with rio.open(input_path) as src: 
     profile = src.profile 
     arr = src.read(1).astype(np.float32)
     nodata = src.nodata
