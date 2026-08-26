@@ -128,3 +128,43 @@ Kernel size 10
 <fig>
 <img width="1014" height="679" alt="image" src="https://github.com/user-attachments/assets/1c9195d1-8bee-43d1-8ad9-06f5fdc98cc4" />
 </fig>
+Kernel size 13
+<fig>
+<img width="1254" height="1670" alt="image" src="https://github.com/user-attachments/assets/f376319d-4db0-45af-b5ec-6adc1c935659" />
+</fig>
+<fig>
+<img width="1508" height="1480" alt="image" src="https://github.com/user-attachments/assets/178b3a99-b874-44a2-b3d5-4f5d8db511a9" />
+</fig>
+<fig>
+<img width="2230" height="1500" alt="image" src="https://github.com/user-attachments/assets/e14df1c7-6ddc-4dd3-a573-3070ba6774df" />
+</fig>
+Kernel size 15
+<fig>
+<img width="1198" height="1586" alt="image" src="https://github.com/user-attachments/assets/b034fb8b-84cc-4382-9dea-9520bb399156" />
+</fig>
+<fig>
+<img width="1500" height="1480" alt="image" src="https://github.com/user-attachments/assets/daea67d0-7d8f-437f-bd18-5f301dcbacb4" />
+</fig>
+<fig>
+<img width="2232" height="1500" alt="image" src="https://github.com/user-attachments/assets/51f2797c-95c3-4b0a-a49a-6de0c06174b8" />
+</fig>
+Kernel size 17
+<fig>
+<img width="1252" height="1664" alt="image" src="https://github.com/user-attachments/assets/8bcaa65f-bda7-4d3b-bdd6-aba66274f132" />
+</fig>
+<fig>
+<img width="1674" height="1654" alt="image" src="https://github.com/user-attachments/assets/7154a2ab-33ea-4066-8067-8a8bcb53bb75" />
+</fig>
+<fig>
+<img width="2486" height="1670" alt="image" src="https://github.com/user-attachments/assets/8564aa29-5388-4a25-a897-368a4c67e8c1" />
+</fig>
+Kernel size 21
+<fig>
+<img width="1260" height="1680" alt="image" src="https://github.com/user-attachments/assets/6d4d7860-7d2b-4b21-a206-24fdf7c36484" />
+</fig>
+<fig>
+<img width="1672" height="1648" alt="image" src="https://github.com/user-attachments/assets/e1f80788-5994-4425-b75e-5b4d1cca2a8a" />
+</fig>
+<fig>
+<img width="2490" height="1672" alt="image" src="https://github.com/user-attachments/assets/e2a15647-acd2-49e3-8ca5-96bb790979c6" />
+</fig>
