@@ -55,3 +55,23 @@ Kernel size - 10
 <figure>
   <img width="955" height="979" alt="image" src="https://github.com/user-attachments/assets/02f5a323-88ec-4c98-ac4a-a7b1360f3b64" />
 </figure>
+
+Kernel size - 13
+<figure>
+  <img width="1670" height="1678" alt="image" src="https://github.com/user-attachments/assets/600ae2c7-292e-4750-8c1c-c290a132c49a" />
+</figure>
+
+Kernel size - 15
+<figure>
+  <img width="1660" height="1664" alt="image" src="https://github.com/user-attachments/assets/d48fb373-259c-45d0-9e88-f4aa1bb0eb1b" />
+</figure>
+
+Kernel size - 17 
+<figure>
+  <img width="1666" height="1668" alt="image" src="https://github.com/user-attachments/assets/6100de02-dac9-45f1-ade0-ab2433882226" />
+</figure>
+
+Kernel size - 21 
+<figure>
+  <img width="1658" height="1668" alt="image" src="https://github.com/user-attachments/assets/f93e0973-7060-4a44-b46a-743ff11f9add" />
+</figure>
