@@ -34,6 +34,7 @@ Vključil sem si tudi subjektivno oceno glede vizualizacije. Ocenjeval sem na po
 Na začetku projekta sem si zastavil raziskovalno vprašanje in sicer: Kako velikost kernel_size pri uporabi medianega filtra vpliva na interpretabilnost LiDAR rastra za arheološko vizualizacijo reliefa?
 Na to vprašanje sem z vztrajnim raziskovanjem in stalnim eksperimentiranjem prišel do odgovora. Rezultati so pokazali, da je vprašanje kompleksnejše, kot je bilo sprva predvideno, saj na optimalno izbiro velikosti kernela vpliva več različnih dejavnikov.
 Prav tako sem si zadal svojo hipotezo, ki pa je omogočila zgolj delni odgovor in jo je seveda potrebno preoblikovati v nekoliko bolj natančno obliko. 
+<br><br>
 
         Predvideva se, da velikost kernel_size pri uporabi medianega filtra pomembno vpliva na interpretabilnost LiDAR rastra. Srednje velike vrednosti kernel_size naj bi zagotavljale najboljše razmerje med zmanjšanjem šuma in ohranjanjem drobnih arheološko pomembnih reliefnih struktur. Z naraščanjem velikosti kernel_size se pričakuje izrazitejše glajenje rastra, zaradi česar lahko pride do zmanjšanja, izgube ali popačenja manjših reliefnih struktur. 
         Neustrezna izbira velikosti kernel_size lahko zato vodi do napačne arheološke interpretacije.
