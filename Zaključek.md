@@ -1,4 +1,4 @@
-Začasni zaključek
+# Začasni zaključek
 
 Po pregledu vizualizacij in primerjav sem pri svojem raziskovalnem vprašanju prišel do začasnega sklepa.
 
@@ -19,10 +19,15 @@ Moje ugotovitve se skladajo tudi z opažanji drugih avtorjev. Hesse pojasnjuje, 
 Te ugotovitve nakazujejo, da manjši kernel_size bolje ohranja podrobnosti drobnejših arheoloških struktur, medtem ko bi večje vrednosti verjetno poudarile širše, obsežnejše reliefne oblike, ki pa lahko delno ali povsem zabrišejo arheoloških sledi. 
 Prav tako je bilo na podlagi rezultatov ugotovljeno, da je učinek median filtra izrazitejši pri uporabi lihe vrednosti parametra kernel_size. To je mogoče pojasniti z načinom delovanja median filtra, pri katerem se za vsako celico rastra obravnava njeno lokalno sosedstvo znotraj določenega okna. Pri lihem kernel_size ima tako okno jasno določeno osrednjo celico, kar omogoča določitev mediane iz lihega števila vrednosti. Pri večjih vrednostih kernel_size se v obdelavo vključi večje število okoliških celic, zaradi česar je učinek glajenja izrazitejši in lahko pride do izgube oziroma popačenja manjših reliefnih struktur.
 
+## Rezultat 1 
+<fig>
+    <img width="1642" height="1636" alt="image" src="https://github.com/user-attachments/assets/8ade887f-9c1d-4a92-9f3c-58d7101860aa" />
+    <figcaption>A) Original iz PDAL (brez mediane in kernel_size); B) kernel_size = 5; C) kernel_size = 13; D) kernel_size =  21
+</fig>
 
-
-
-
+<br><br>
+<br><br>
+<br><br>
 Ob tem bi bilo zanimivo, da bi namesto mediana filtra zamenjal v Lee filter, ki ga omenjajo avtorji v članku [2], ter med njima naredil primerjavo. 
 Namreč Lee filter zmanjša šum, hkrati pa poskuša ohraniti robove in lokalne strukture. Eksperiment bom izvedel v bodoče in naredil primerjavo med mediano filter ter Lee filter. 
 
