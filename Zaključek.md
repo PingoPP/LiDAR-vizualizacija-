@@ -21,6 +21,6 @@ Ob tem bi bilo zanimivo, da bi namesto mediana filtra zamenjal v Lee filter, ki 
 Namreč Lee filter zmanjša šum, hkrati pa poskuša ohraniti robove in lokalne strukture.
 
 
-Literatura
-[1] Hesse, R. 2010 LiDAR - derived LRM - a new tool for archaeological prospection. - vol. 17, issue 2, Archaeological prospection.
+# Literatura
+[1] Hesse, R. 2010 LiDAR - derived LRM - a new tool for archaeological prospection. - vol. 17, issue 2, Archaeological prospection.<br><br>
 [2] Massini et al. 2018 Medieval Archaeology Under the Canopy with LiDAR. The (Re)Discovery of a Medieval Forified Settlement in Southern Italy. - 10, 1598, MDPI Remote Sensing.  
