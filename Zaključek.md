@@ -15,7 +15,7 @@ Glede na dosedanje rezultate ocenjujem, da v povprečju najboljše rezultate dos
 
 Moje ugotovitve se skladajo tudi z opažanji drugih avtorjev. Hesse pojasnjuje, da kernel_size vpliva predvsem na prostorsko merilo, znotraj katerega orodje izračuna lokalno površino (raster v .tif formatu); večji kernel_size tako pomeni širše območje izračuna, kar posledično spreminja merilo reliefnih struktur, ki jih vizualizacija poudari [1]. Podobno tudi članek o srednjeveškem naselju v južni Italiji izpostavlja, da so nekateri filtri – na primer Local Relief Model (LRM) – odvisni od kernel_size, saj se statistični parametri izračunajo znotraj izbranega kernela; posledično izbira velikosti kernela pomembno vpliva na končni rezultat [2].
 
-Te ugotovitve nakazujejo, da manjši kernel_size bolje ohranja podrobnosti drobnejših arheoloških struktur, medtem ko bi večje vrednosti verjetno poudarile širše, obsežnejše reliefne oblike, ki pa lahko delno ali povsem zabrišejo arheoloških sledi. 
+Te ugotovitve nakazujejo, da manjši kernel_size bolje ohranja podrobnosti drobnejših arheoloških struktur, medtem ko lahko večje vrednosti poudarijo širše oziroma obsežnejše reliefne oblike, ki pa lahko delno ali povsem zabrišejo arheoloških sledi. 
 Rezultati so pokazali, da so bile pri uporabi medianega filtra lihe vrednosti kernel_size v obravnavanem primeru primernejše za ohranjanje oziroma izboljšanje interpretabilnosti. To je mogoče pojasniti z načinom delovanja median filtra, pri katerem se za vsako celico rastra obravnava njeno lokalno sosedstvo znotraj določenega okna. Pri lihem kernel_size ima tako okno jasno določeno osrednjo celico, kar omogoča določitev mediane iz lihega števila vrednosti. Pri večjih vrednostih kernel_size se v obdelavo vključi večje število okoliških celic, zaradi česar je učinek glajenja izrazitejši in lahko pride do izgube oziroma popačenja manjših reliefnih struktur.
 
 ## Rezultat 1 
@@ -33,13 +33,16 @@ Vključil sem si tudi subjektivno oceno glede vizualizacije. Ocenjeval sem na po
 <br><br>
 Na začetku projekta sem si zastavil raziskovalno vprašanje in sicer: Kako velikost kernel_size pri uporabi medianega filtra vpliva na interpretabilnost LiDAR rastra za arheološko vizualizacijo reliefa?
 Na to vprašanje sem z vztrajnim raziskovanjem in stalnim eksperimentiranjem prišel do odgovora. Rezultati so pokazali, da je vprašanje kompleksnejše, kot je bilo sprva predvideno, saj na optimalno izbiro velikosti kernela vpliva več različnih dejavnikov.
-Prav tako sem si zadal svojo hipotezo, ki pa je prinesel zgolj delni odgovor in je seveda potrebno preoblikovati v nekoliko bolj natančno obliko. 
+Prav tako sem si zadal svojo hipotezo, ki pa je omogočila zgolj delni odgovor in jo je seveda potrebno preoblikovati v nekoliko bolj natančno obliko. 
 
-            Optimalna velikost kernel_size pri uporabi medianega filtra za vizualizacijo LiDAR rastra je odvisna od prostorske velikosti obravnavanega območja. Pričakuje se, da srednje velike vrednosti kernel_size zagotavljajo najboljšo interpretabilnost reliefnih struktur, saj učinkovito zmanjšujejo šum, hkrati pa še ohranjajo drobne arheološko pomembne strukture. Z naraščanjem velikosti kernel_size se pričakuje izrazitejše glajenje rastra in                     posledično zmanjšanje oziroma izguba manjših reliefnih struktur. Neustrezna izbira velikosti kernel_size lahko zato povzroči izgubo ali popačenje reliefnih struktur in posledično vodi do napačne arheološke interpretacije.
-
+        Predvideva se, da velikost kernel_size pri uporabi medianega filtra pomembno vpliva na interpretabilnost LiDAR rastra. Srednje velike vrednosti kernel_size naj bi zagotavljale najboljše razmerje med zmanjšanjem šuma in ohranjanjem drobnih arheološko pomembnih reliefnih struktur. Z naraščanjem velikosti kernel_size se pričakuje izrazitejše glajenje rastra, zaradi česar lahko pride do zmanjšanja, izgube ali popačenja manjših reliefnih struktur. 
+        Neustrezna izbira velikosti kernel_size lahko zato vodi do napačne arheološke interpretacije.
+        
 <br><br>
 Ob tem bi bilo zanimivo, da bi namesto mediana filtra zamenjal v Lee filter, ki ga omenjajo avtorji v članku [2], ter med njima naredil primerjavo. 
 Namreč Lee filter zmanjša šum, hkrati pa poskuša ohraniti robove in lokalne strukture. Eksperiment bom izvedel v bodoče in naredil primerjavo med mediano filter ter Lee filter. 
+
+Prav tako bi bilo smisleno preveriti tudi, ali je optimalna velikost kernel_size povezana s prostorsko velikostjo vhodnega LiDAR območja.
 <br><br>
 # Literatura
 [1] Hesse, R. 2010 LiDAR - derived LRM - a new tool for archaeological prospection. - vol. 17, issue 2, Archaeological prospection.<br><br>
