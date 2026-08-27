@@ -29,7 +29,7 @@ Rezultati so pokazali, da so bile pri uporabi medianega filtra lihe vrednosti ke
     <figcaption>A) Original iz PDAL (brez mediane in kernel_size); B) kernel_size = 5; C) kernel_size = 13; D) kernel_size =  21
 </fig>
 <br><br>
-Vključil sem si tudi subjektivno oceno glede vizualizacije. Ocenjeval sem na podlagi treh kriterijev in sicer; berljivost, vidne strukture in čistota, ter nato skupaj seštel in naredil povprečje. Na podlagi subjektivnega ocenjevanja se je izkazalo, da je bila vrednost kernel_size = 5 med testiranimi vrednostmi najbolj uspešna, medtem ko so bile pri drugih vrednostih ocene nekoliko nižje.
+Vključil sem tudi subjektivno oceno glede vizualizacije. Ocenjeval sem na podlagi treh kriterijev, in sicer: berljivost, vidne strukture in čistota, ter nato skupaj seštel in naredil povprečje. Na podlagi subjektivnega ocenjevanja se je izkazalo, da je bila vrednost kernel_size = 5 med testiranimi vrednostmi najbolj uspešna, medtem ko so bile pri drugih vrednostih ocene nekoliko nižje.
 <br><br>
 Na začetku projekta sem si zastavil raziskovalno vprašanje in sicer: Kako velikost kernel_size pri uporabi medianega filtra vpliva na interpretabilnost LiDAR rastra za arheološko vizualizacijo reliefa?
 Na to vprašanje sem z vztrajnim raziskovanjem in stalnim eksperimentiranjem prišel do odgovora. Rezultati so pokazali, da je vprašanje kompleksnejše, kot je bilo sprva predvideno, saj na optimalno izbiro velikosti kernela vpliva več različnih dejavnikov.
@@ -40,8 +40,8 @@ Prav tako sem si zadal svojo hipotezo, ki pa je omogočila zgolj delni odgovor i
         Neustrezna izbira velikosti kernel_size lahko zato vodi do napačne arheološke interpretacije.
         
 <br><br>
-Ob tem bi bilo zanimivo, da bi namesto mediana filtra zamenjal v Lee filter, ki ga omenjajo avtorji v članku [2], ter med njima naredil primerjavo. 
-Namreč Lee filter zmanjša šum, hkrati pa poskuša ohraniti robove in lokalne strukture. Eksperiment bom izvedel v bodoče in naredil primerjavo med mediano filter ter Lee filter. 
+Ob tem bi bilo zanimivo, da bi namesto medianega filtra zamenjal v Lee filter, ki ga omenjajo avtorji v članku [2], ter med njima naredil primerjavo. 
+Namreč Lee filter zmanjša šum, hkrati pa poskuša ohraniti robove in lokalne strukture. Ta eksperiment nameravam izvesti v prihodnje.  
 
 Prav tako bi bilo smisleno preveriti tudi, ali je optimalna velikost kernel_size povezana s prostorsko velikostjo vhodnega LiDAR območja.
 <br><br>
