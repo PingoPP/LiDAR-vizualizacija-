@@ -41,7 +41,7 @@ Za samo vizualizacijo sem se odločil uporabiti Sky View Factor iz orodja RVT.
 
 # Raziskovalno vprašanje: 
 
-    Kako velikost vhodnega LiDAR območja vpliva na optimalno velikost kernela pri uporabi medianega filtra za vizualizacijo reliefa?
+    Kako velikost kernel_size pri uporabi medianega filtra vpliva na interpretabilnost LiDAR rastra za arheološko vizualizacijo reliefa?
 
 # Hipoteza
 
