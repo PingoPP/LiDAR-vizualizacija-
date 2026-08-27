@@ -43,4 +43,6 @@ Za samo vizualizacijo sem se odločil uporabiti Sky View Factor iz orodja RVT.
 
     Kako velikost vhodnega LiDAR območja vpliva na optimalno velikost kernela pri uporabi medianega filtra za vizualizacijo reliefa?
 
+# Hipoteza
 
+    Učinek median filtra na interpretabilnost LiDAR rastra je odvisen od velikosti uporabljenega kernel_size in prostorske velikosti rastra. Pri večjih vrednostih kernel_size se pričakuje večja stopnja glajenja rastra, zaradi česar se lahko manjše reliefne strukture izgubijo ali popačijo (onemogočeno arheološko interpretiranje).
