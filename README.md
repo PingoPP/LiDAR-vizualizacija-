@@ -17,7 +17,7 @@ Kodo programa prav tako lahko vidite na temu reprozitoriju, in sicer:
               - PDAL (začetek za obdelovanje točk, zbiranje klasifikacij...)
               - Kernel in mediana filter (izboljšanje vizualizacij)
 
-Da bi bil poskus primerljiv in ponovljiv, sem se odločil, da bom sproti opazoval od PDAL (brez uporabe kernel-a in mediane filter) vse do kernel_size 10 in pri tem spremljal vpliv vizualizacije posnetka.
+Da bi bil poskus primerljiv in ponovljiv, sem se odločil, da bom sproti opazoval od PDAL (brez uporabe kernel-a in mediane filter) vse do kernel_size 10, 13, 15, 17 ter 21 in pri tem spremljal vpliv vizualizacije posnetka.
 Nato sem .tif datoteko, ki se mi je naložila v datotekah, odprl v QGIS okolju, kjer sem nato uporabil slednja orodja:
 
               - GDAL - Fill NoData (če je potrebno)
