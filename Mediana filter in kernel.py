@@ -2,77 +2,112 @@ import rasterio as rio
 import numpy as np 
 from scipy.ndimage import median_filter
 import os 
+
 """
+Kernel oziroma jedro je v kontekstu obdelave rastrskih in slikovnih podatkov
+lokalno območje celic, ki ga algoritem uporablja pri obdelavi posamezne celice.
+Velikost kernela določa, kako široko okolico posamezne celice algoritem upošteva.
 
-Kernel oz. jedro je v kontekstu obdelave slik in prostorskih podaktov matrika (nekakšno okno), ki se pomika čez podatke in se uporablja za razne operacije kot je konvolucija.
-V tem algoritmu se osredotočam specifično na kernel_size, ki predstavlja velikost tega območja okoli posameznega piksla (celice), ki ga algoritem obravnava. 
-
-Primer 3*3 kernela:
+Primer 3 × 3 kernela:
 
                     [ 1 ][ 2 ][ 3 ]
                     [ 4 ][ X ][ 6 ]
                     [ 7 ][ 8 ][ 9 ]
 
-V tem primeru imamo 3*3 matriko, ki vsebuje devet celic. Kernel zajema osrednjo celico X in njenih osem sosednjih celic. Pri konvoluciji se vrednosti znotraj tega območja uporabijo za izračun nove vrednosti osrednje celice.
+V tem primeru imamo 3 × 3 matriko, ki vsebuje devet celic. Kernel zajema
+osrednjo celico X in njenih osem sosednjih celic. Pri različnih postopkih
+obdelave se vrednosti znotraj tega lokalnega območja uporabijo za izračun
+oziroma določitev nove vrednosti osrednje celice.
 
-Pri LiDAR podatkih je koncept nekoliko širši, saj je kernel lahko uporabljen tako nad 2D rastrskimi podatki kot tudi nad 3D prostorskimi podatki.
+V tem algoritmu se osredotočam na parameter kernel_size, ki določa velikost
+lokalnega okna, uporabljenega pri medianem filtru. Ker se pri tem eksperimentu
+dela z 2D rastrskimi podatki, je kernel prav tako dvodimenzionalen.
 
-Pri 2D rastru lahko na primer uporabimo:
+Primeri velikosti kernela:
 
-                          3*3
-                          5*5
-                          7*7
-                          
-Pri 3D podatkih pa lahko govorimo o volumetričnem kernelu:
-
-                          3*3*3
-                          5*5*5
-                          7*7*7
-                          
-Pri tem tretja dimenzija predstavlja prostorsko razsežnost v 3D prostoru.
+                          3 × 3
+                          5 × 5
+                          7 × 7
 
 Vpliv velikosti kernela
 
-    - Majhni kerneli (npr. 3*3 ali 3*3*3) se uporabljajo za ekstrakcijo lokalnih značilnosti, glajenje in standardne konvolucije. Njihova prednost je manjša računska zahtevnost, vendar zajamejo le manjši lokalni kontekst.
-      Pri premajhnem kernel_size šum ne bo popolnoma odstranjen.
+- Majhni kerneli (npr. 3 × 3) obravnavajo manjše lokalno območje. Njihova
+  prednost je, da bolje ohranjajo drobne strukture, vendar lahko pri tem
+  odstranijo manj šuma.
 
-    - Srednje veliki kerneli (npr. 5*5 do 9*9 oziroma 5*5*5 do 9*9*9) omogočajo obravnavo širše okolice in zato zaznavanje večjih lokalnih struktur. Kernel, če ima 7*7 in ločljivost 0,5 m, pri tem pokriva približno 3.5*3.5 območja
-      Kerneli te velikosti (kernel_size) so praviloma dovolj veliki, da v celoti zaobjamejo tipične strukture in omogočijo učinkovito odstranjevanje šuma.  
+- Srednje veliki kerneli (npr. 5 × 5 do 9 × 9) zajamejo širšo okolico
+  posamezne celice. Zaradi tega lahko učinkoviteje zmanjšajo šum, hkrati
+  pa še vedno omogočajo ohranjanje pomembnejših reliefnih struktur.
 
-    - Veliki kerneli (npr. 21*21 ali več oziroma 21*21*21 ali več) zajamejo precej širši prostorski kontekst. Uporabni so pri naprednejših modelih, kjer je pomembno povezovanje informacij iz večjega območja.
-      Tu je treba ločiti velikost kernela od ločljivosti rastra.
+- Veliki kerneli (npr. 21 × 21 ali več) zajamejo precej širše prostorsko
+  območje. Pri filtriranju lahko zato močneje zmanjšajo šum, vendar lahko
+  hkrati povzročijo izgubo manjših oziroma drobnejših reliefnih struktur.
 
-Dejavniki pri izbiri kernel size
-Na izbiro velikosti kernela vpliva več dejavnikov:
-    
-    gostota LiDAR točk oziroma prostorska ločljivost podatkov,
-    merilo ciljnega objekta oziroma strukture,
-    namen analize,
-    računska zahtevnost oziroma razpoložljivi računski viri.
+Pri izbiri velikosti kernela je zato treba upoštevati predvsem:
 
-Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo podatkov, saj ista velikost kernela pri različnih ločljivostih pokriva zelo različno fizično območje. 
-Kernel 3*3 pri rastru z ločljivostjo 0,5 m pokriva območje približno 1,5x1,5 m (torej 2,25 m²), medtem ko isti kernel 3*3 pri rastru z ločljivostjo 2 m pokriva območje 6*6 m (36 m²) torej 16-krat večjo fizično površino, čeprav gre za enako velik kernel v pikslih.
+    - prostorsko ločljivost rastra,
+    - velikost oziroma merilo ciljnih struktur,
+    - namen analize,
+    - količino šuma v podatkih,
+    - računsko zahtevnost.
 
-Medtem pri čiščenju matrike ima zelo pomemben vpliv MEDIANA FILTER.
-Mediana filter je nelinearna digitalna tehnika filtriranja, ki se uporablja za odstranjevanje šuma iz slik ali signalov.
-Sam filter deluje tako, da se pomika skozi okno čez podatke, kjer nato razvrsti sosednje vrednosti. 
-Osrednjo vrednost nato nadomesti z mediano vrednostjo. Kljub temu, da odstrani šum, pri tem ohranja ostre robove.
+Pomembno je, da velikost kernela vedno obravnavamo v povezavi z ločljivostjo
+rastra, saj ista velikost kernela pri različnih ločljivostih pokriva različno
+veliko fizično območje.
 
-Primer delovanja mediana filtra
+Na primer, kernel velikosti 3 × 3 pri rastru z ločljivostjo 0,5 m pokriva
+območje približno 1,5 × 1,5 m oziroma 2,25 m². Pri rastru z ločljivostjo
+2 m pa isti kernel pokriva območje 6 × 6 m oziroma 36 m².
 
-1. Izbira velikosti okna. V tem primeru bomo vzeli 3*3 veliko okno, ki je razporejeno okoli centralnega piksla za filtriranje. 
-2. Zbiranje vrednosti pikslov
-    primer: 
+Mediani filter
+
+Mediani filter je nelinearna tehnika filtriranja, ki se pogosto uporablja
+za zmanjševanje šuma v slikah in rastrskih podatkih.
+
+Filter se pomika po rastru in za vsako osrednjo celico določi vrednosti celic
+znotraj izbranega lokalnega okna. Te vrednosti razvrsti po velikosti, nato
+pa vrednost osrednje celice nadomesti z njihovo mediano.
+
+Primer delovanja medianega filtra:
+
+1. Izbira velikosti okna
+
+   V tem primeru uporabimo okno velikosti 3 × 3, ki je razporejeno okoli
+   osrednje celice.
+
+2. Zbiranje vrednosti celic
+
             [ 1 ][ 2 ][ 3 ]
             [ 4 ][ 8 ][ 6 ]
             [ 7 ][ 5 ][ 9 ]
-            
-    kjer je v centru piksel z vrednostjo 8
-3. Sortiranje vrednosti pikslov po naraščajočem vrstnem redu. Za centralni piksel so razvrščeni: [1, 2, 3, 4, 5, 6, 7, 8, 9].
-4. V naslednji fazi je mediana vrednost 5.
-5. Na podlagi vrednosti mediane se ta nato zapiše v center, kjer je bila prej vrednost 8.
-6. Postopek 2.-5. se ponovi za vse ostale piksle v sliki.
 
+   Osrednja celica ima vrednost 8.
+
+3. Razvrščanje vrednosti
+
+   Vrednosti znotraj okna razvrstimo po naraščajočem vrstnem redu:
+
+            [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+4. Določitev mediane
+
+   Ker je v naboru devet vrednosti, je srednja oziroma mediana vrednost 5.
+
+5. Zamenjava osrednje vrednosti
+
+   Vrednost osrednje celice se spremeni iz 8 v 5.
+
+6. Ponovitev postopka
+
+   Postopek se ponovi za vse ostale celice rastra.
+
+Prednost medianega filtra je, da lahko učinkovito zmanjša določene vrste
+šuma, pri tem pa običajno bolje ohranja robove in izrazitejše strukture
+kot nekateri linearni filtri.
+
+V tem eksperimentu se zato preverja, kako različne vrednosti parametra
+kernel_size vplivajo na kakovost končne LiDAR vizualizacije in na možnost
+interpretacije arheoloških oziroma geomorfoloških struktur.
 """
 #vhod datoteke (pred uporabo kernel_size)
 input_path = r"\xxxx\xx.tif"
