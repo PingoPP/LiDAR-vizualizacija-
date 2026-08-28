@@ -2,7 +2,7 @@
 
 Po pregledu vizualizacij in primerjav sem pri svojem raziskovalnem vprašanju prišel do začasnega sklepa.
 
-Vizualizacija, izdelana neposredno iz surove datoteke PDAL, brez uporabljenega kernel_size in mediana filtra, je bila polna šuma, kar je močno oteževalo interpretacijo. Pri tem sem preizkusil vrednosti kernel_size med 1 in 10, nato pa še večje vrednosti (15, 20 in 25), da bi ocenil njihov vpliv na celotno datoteko.
+Vizualizacija, izdelana neposredno iz surove datoteke PDAL, brez uporabljenega kernel_size in mediana filtra, je bila polna šuma, kar je močno oteževalo interpretacijo. Pri tem sem preizkusil vrednosti kernel_size med 1 in 10, nato pa še večje vrednosti (13, 15, 17 in 21), da bi ocenil njihov vpliv na celotno datoteko.
 
 Glede na dosedanje rezultate ocenjujem, da v povprečju najboljše rezultate dosežem pri kernel_size 4 ali 5. Ta ugotovitev pa ni univerzalna, saj je optimalna vrednost odvisna od več dejavnikov, med drugim od:
 
