@@ -6,17 +6,19 @@ Vizualizacija, izdelana neposredno iz surove datoteke PDAL, brez uporabljenega k
 
 Glede na dosedanje rezultate ocenjujem, da v povprečju najboljše rezultate dosežem pri kernel_size 4 ali 5. Ta ugotovitev pa ni univerzalna, saj je optimalna vrednost odvisna od več dejavnikov, med drugim od:
 
-    načina snemanja z LiDAR kamero,
+    načina snemanja z LiDAR senzor,
     postopka filtriranja,
     klasifikacije,
     modeliranja,
     rasterizacije,
     izbire filtrov v PDAL-u.
 
-Moje ugotovitve se skladajo tudi z opažanji drugih avtorjev. Hesse pojasnjuje, da kernel_size vpliva predvsem na prostorsko merilo, znotraj katerega orodje izračuna lokalno površino (raster v .tif formatu); večji kernel_size tako pomeni širše območje izračuna, kar posledično spreminja merilo reliefnih struktur, ki jih vizualizacija poudari [1]. Podobno tudi članek o srednjeveškem naselju v južni Italiji izpostavlja, da so nekateri filtri – na primer Local Relief Model (LRM) – odvisni od kernel_size, saj se statistični parametri izračunajo znotraj izbranega kernela; posledično izbira velikosti kernela pomembno vpliva na končni rezultat [2].
+Moje ugotovitve se skladajo tudi z opažanji drugih avtorjev. Hesse pojasnjuje, da kernel_size vpliva predvsem na prostorsko merilo, znotraj katerega orodje izračuna lokalno površino (raster v .tif formatu); večji kernel_size tako pomeni širše območje izračuna, kar posledično spreminja merilo reliefnih struktur, ki jih vizualizacija poudari [1]. Podobno tudi članek o srednjeveškem naselju v južni Italiji izpostavlja, da so nekateri filtri – na primer Local Relief Model (LRM) – odvisni od kernel_size, saj se statistični parametri izračunajo znotraj izbranega kernela; posledično izbira velikosti kernela pomembno vpliva na končni rezultat [2] [3].
 
-Te ugotovitve nakazujejo, da manjši kernel_size bolje ohranja podrobnosti drobnejših arheoloških struktur, medtem ko lahko večje vrednosti poudarijo širše oziroma obsežnejše reliefne oblike, ki pa lahko delno ali povsem zabrišejo arheoloških sledi. 
-Rezultati so pokazali, da so bile pri uporabi medianega filtra lihe vrednosti kernel_size v obravnavanem primeru primernejše za ohranjanje oziroma izboljšanje interpretabilnosti. To je mogoče pojasniti z načinom delovanja median filtra, pri katerem se za vsako celico rastra obravnava njeno lokalno sosedstvo znotraj določenega okna. Pri lihem kernel_size ima tako okno jasno določeno osrednjo celico, kar omogoča določitev mediane iz lihega števila vrednosti. Pri večjih vrednostih kernel_size se v obdelavo vključi večje število okoliških celic, zaradi česar je učinek glajenja izrazitejši in lahko pride do izgube oziroma popačenja manjših reliefnih struktur.
+Rezultati so pokazali, da so bile pri uporabi medianega filtra v obravnavanem primeru lihe vrednosti kernel_size nekoliko primernejše za ohranjanje oziroma izboljšanje interpretabilnosti. Pri medianem filtru se za vsako celico rastra obravnava njeno lokalno sosedstvo znotraj določenega okna. Pri večjih vrednostih kernel_size se v obdelavo vključi večje število okoliških celic, zaradi česar je učinek glajenja izrazitejši. To lahko povzroči izgubo oziroma popačenje manjših reliefnih struktur. Vendar rezultatov ni mogoče posplošiti na vse LiDAR podatke, saj je optimalna velikost kernela odvisna tudi od značilnosti vhodnega rastra in namena vizualizacije.
+
+Median filter je znan filter, ki lahko ohrani ostrino izrazitih sprememb naklona, hkrati pa zmanjša šum oziroma zgladi DEM. Avtorji omenjajo, da ta filter nima samo pozitivnih lastnosti, saj lahko glede na velikost parametra kernel_size močno zgladi površino, kar lahko oteži oziroma privede do napačne interpretacije [3].
+
 
 ## Rezultat 1 
 <fig>
@@ -48,3 +50,4 @@ Prav tako bi bilo smisleno preveriti tudi, ali je optimalna velikost kernel_size
 # Literatura
 [1] Hesse, R. 2010 LiDAR - derived LRM - a new tool for archaeological prospection. - vol. 17, issue 2, Archaeological prospection.<br><br>
 [2] Massini et al. 2018 Medieval Archaeology Under the Canopy with LiDAR. The (Re)Discovery of a Medieval Forified Settlement in Southern Italy. - 10, 1598, MDPI Remote Sensing.  
+[3] Lindsay, B. J. et al. 2019 LiDAR DEM Smoothing and the Preservation of Drainage Features. - 11, 1926, MDPI Remote Sensing. 
