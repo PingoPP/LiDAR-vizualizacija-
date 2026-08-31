@@ -49,5 +49,5 @@ Prav tako bi bilo smisleno preveriti tudi, ali je optimalna velikost kernel_size
 <br><br>
 # Literatura
 [1] Hesse, R. 2010 LiDAR - derived LRM - a new tool for archaeological prospection. - vol. 17, issue 2, Archaeological prospection.<br><br>
-[2] Massini et al. 2018 Medieval Archaeology Under the Canopy with LiDAR. The (Re)Discovery of a Medieval Forified Settlement in Southern Italy. - 10, 1598, MDPI Remote Sensing.  
+[2] Massini et al. 2018 Medieval Archaeology Under the Canopy with LiDAR. The (Re)Discovery of a Medieval Forified Settlement in Southern Italy. - 10, 1598, MDPI Remote Sensing.<br><br>
 [3] Lindsay, B. J. et al. 2019 LiDAR DEM Smoothing and the Preservation of Drainage Features. - 11, 1926, MDPI Remote Sensing. 
