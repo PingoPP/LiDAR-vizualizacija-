@@ -5,23 +5,24 @@ import os
 
 """
 Kernel oziroma jedro je v kontekstu obdelave rastrskih in slikovnih podatkov
-lokalno območje celic, ki ga algoritem uporablja pri obdelavi posamezne celice.
+lokalno območje celic, ki ga algoritem uporablja za izračun vrednosti posameznih celic.
 Velikost kernela določa, kako široko okolico posamezne celice algoritem upošteva.
 
 Primer 3 × 3 kernela:
 
-                    [ 1 ][ 2 ][ 3 ]
-                    [ 4 ][ X ][ 6 ]
-                    [ 7 ][ 8 ][ 9 ]
+                [ 1 ][ 2 ][ 3 ]  ┐
+                [ 4 ][ X ][ 6 ]  ┤ d
+                [ 7 ][ 8 ][ 9 ]  ┘
 
 V tem primeru imamo 3 × 3 matriko, ki vsebuje devet celic. Kernel zajema
 osrednjo celico X in njenih osem sosednjih celic. Pri različnih postopkih
 obdelave se vrednosti znotraj tega lokalnega območja uporabijo za izračun
 oziroma določitev nove vrednosti osrednje celice.
 
-V tem algoritmu se osredotočam na parameter kernel_size, ki določa velikost
-lokalnega okna, uporabljenega pri medianem filtru. Ker se pri tem eksperimentu
-dela z 2D rastrskimi podatki, je kernel prav tako dvodimenzionalen.
+Na desni strani matrike je s puščicami prikazana prostorska ločljivost mreže (d), ki predstavlja razdaljo med sosednjimi celicami.
+
+Pri medianem filtru, ki ga uporabljam v tem algoritmu, se osredotočam na parameter kernel_size, ki določa velikost lokalnega okna. 
+Ker se pri tem eksperimentu dela z 2D rastrskimi podatki, je kernel prav tako dvodimenzionalen.
 
 Primeri velikosti kernela:
 
@@ -41,7 +42,7 @@ Vpliv velikosti kernela
 
 - Veliki kerneli (npr. 21 × 21 ali več) zajamejo precej širše prostorsko
   območje. Pri filtriranju lahko zato močneje zmanjšajo šum, vendar lahko
-  hkrati povzročijo izgubo manjših oziroma drobnejših reliefnih struktur.
+  hkrati povzročijo izgubo mikrostruktur in nekaterih reliefnih struktur.
 
 Pri izbiri velikosti kernela je zato treba upoštevati predvsem:
 
@@ -59,9 +60,9 @@ Na primer, kernel velikosti 3 × 3 pri rastru z ločljivostjo 0,5 m pokriva
 območje približno 1,5 × 1,5 m oziroma 2,25 m². Pri rastru z ločljivostjo
 2 m pa isti kernel pokriva območje 6 × 6 m oziroma 36 m².
 
-Mediani filter
+Mediana filter
 
-Mediani filter je nelinearna tehnika filtriranja, ki se pogosto uporablja
+Mediana filter je nelinearna tehnika filtriranja, ki se pogosto uporablja
 za zmanjševanje šuma v slikah in rastrskih podatkih.
 
 Filter se pomika po rastru in za vsako osrednjo celico določi vrednosti celic
