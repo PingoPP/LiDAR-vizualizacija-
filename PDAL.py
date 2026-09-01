@@ -125,7 +125,7 @@ pipeline_json = {
             "minor_version": "4",
             "dataformat_id": "8"
         },
-# ter tif datoteke
+        # ter tif datoteke
         {
             "type": "writers.gdal",
             "filename": r"C:\Users\jakad\Downloads\radius_merged.tif",
