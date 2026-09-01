@@ -17,7 +17,7 @@ Sam PDAL deluje v osnovi na principu PIPELINE-a, ki predstavlja zaporedje korako
 pipeline_json = {
     "pipeline": [
         #ker sem naložil iz CLSS 10 laz ploščic, ki jih je potrebno združiti uporabil filters.merge.
-        #Za vsako združitev sem še prej dal programu dati funkcijo vhod datoteke, ki so pa označene pod tagX 
+        #Za vsako združitev sem še prej dal programu dati funkcijo vhod datoteke, ki so pa označene pod "tag" 
         {
             "type": "readers.las",
             "filename": r"C:\Users\jakad\Downloads\GKOT_463_91.laz",
