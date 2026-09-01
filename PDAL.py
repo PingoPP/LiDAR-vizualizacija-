@@ -1,8 +1,8 @@
 import pdal 
 import json as json_module
 """
-PDAL je kratica za besedno zvezo Point Data Abstraction Library, kar gre za odprtokodno knjižnico. Knjižnica je namenjena filtriranju, manipuliranju in procesiranju 3D oblakov točk (point cloud) in LiDAR podatkov.
-Uporablja se lahko na več načinov in sicer: command-line orodje ali preko programskih okolij (python).
+PDAL je kratica za besedno zvezo Point Data Abstraction Library, kar gre za odprtokodno knjižnico. Knjižnica je namenjena filtriranju, manipuliranju in procesiranju 3D oblakov točk (point cloud).
+Uporablja se lahko na več načinov in sicer: command-line orodje ali preko programskih okolij (python). 
 Sam PDAL deluje v osnovi na principu PIPELINE-a, ki predstavlja zaporedje korakov, skozi katere gredo podatki od input-a (vhoda) vse do output-a (izhoda).
 
                     "READERS"
