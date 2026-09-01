@@ -100,7 +100,7 @@ pipeline_json = {
             "radius": 1,
             "min_k": 4,
         },
-        #SMRF (Simple Morphological Filter) je namenjen predvsem ločevanju ground in non-ground točk
+        # SMRF (Simple Morphological Filter) je namenjen predvsem ločevanju ground in non-ground točk
         {
             "window": 12,      # velikost morfološkega okna, ki ga filter uporablja pri analizi lokalne površine
             "slope": 0.2,      # dovoljena lokalna strmina terena - višja vrednost omogoča večje spremembe reliefa
@@ -117,7 +117,7 @@ pipeline_json = {
             "type": "filters.range", 
             "limits": "Classification[2:2], Classification[6:6]"
         },
-        #output oz. shranjevanje filtriran in združen laz datoteka.
+        # output oz. shranjevanje filtriran in združen laz datoteka.
         {
             "type": "writers.las",
             "filename": r"C:\Users\jakad\Downloads\radius_merged.laz",
@@ -137,7 +137,7 @@ pipeline_json = {
     ]
 }
 
-#run
+# run
 pipeline = pdal.Pipeline(json_module.dumps(pipeline_json))
 
 #število točk
