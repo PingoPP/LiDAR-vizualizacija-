@@ -73,7 +73,7 @@ pipeline_json = {
             "inputs": ["file1","file2","file3","file4","file5","file6","file7","file8","file9","file10"],
             "tag":"merged"
         },
-        # funkcija filters.elm je, da poskuša odstraniti low noise (nizke šume), ki so prisotni v LAZ datoteki.
+        # funkcija filters.elm poskuša odstraniti low noise (nizke šume), ki so prisotni v LAZ datoteki.
         {
             "type": "filters.elm", 
             "cell": 10.0,       # "cell" določa velikost celice, v kateri filter išče lokalne minimume.
